@@ -9,4 +9,6 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 require('./controllers/authController')(app);
 
+
+
 app.listen(3001);
