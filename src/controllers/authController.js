@@ -4,6 +4,7 @@ const User = require ('../models/User');
 const Seguro = require ('../models/Seguro');
 const Cobertura = require ('../models/cobertura');
 
+
 const router = express.Router();
 
 //const Secure = '';
@@ -34,13 +35,44 @@ router.post('/registercobertura', async(req, res)=> {
     }
 });
 
-router.get('/Seguro', function(req, res){
-    Seguro.findAll().then((Seguro) => {
 
-        res.render('Seguro', {Seguro: Seguro})
-    })
-    
-})
+router.get('/listSeguro', async(req, res)=> {
+
+        const seguro = await Seguro.find()
+        .then(
+            seguro => {
+                return res.send(seguro)
+            }
+        )
+        .catch(err => res.status(400).send({ error:  err}))
+   
+});
+
+router.get('/listcobertura', async(req, res)=> {
+
+        const cobertura = await Cobertura.find()
+        .then(
+            cobertura => {
+                return res.send(cobertura)
+            }
+        )
+        .catch(err => res.status(400).send({ error:  err}))
+   
+});
+router.get('/listuser', async(req, res)=> {
+
+    const user = await User.find()
+    .then(
+        user => {
+            return res.send(user)
+        }
+    )
+    .catch(err => res.status(400).send({ error:  err}))
+
+});
+
+
+
 
 router.post('/cotacao', (req, res) => {
     try{
@@ -54,10 +86,6 @@ router.post('/cotacao', (req, res) => {
         return res.status(400).send({ error:  err});
     }
 });
-
-
-
-
 
 
 

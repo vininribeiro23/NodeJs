@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-mongoose.connect('mongodb+srv://<Password>@cluster0.l7orv.mongodb.net/NodeBD2?retryWrites=true&w=majority');
+mongoose.connect('mongodb+srv://vininribeiro:<password>@cluster0.l7orv.mongodb.net/Node?retryWrites=true&w=majority');
 mongoose.Promise =  global.Promise;
 
 
